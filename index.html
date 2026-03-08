@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jimeaning's Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <nav>
+        <div class="nav-container">
+            <div class="logo">PORTFOLIO</div>
+            <div class="links">
+                <a href="#intro">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#experience">Experience</a>
+                <a href="#activities">Activities</a>
+                <a href="#education">Education</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <section id="intro" class="reveal">
+            <div class="intro-grid">
+                <div class="profile-frame">
+                    <img src="/Users/kjimi/Desktop/Jm/취업사진_white.jpg" alt="Profile" class="profile-img">
+                </div>
+                <div class="intro-text">
+                    <span class="badge">Embedded System Engineer</span>
+                    <h1>안녕하세요,<br>시스템 엔지니어<span class="point"> 김지민</span>입니다.</h1>
+                    
+                    <div class="personal-info">
+                        <p>🎂 1999. 04. 22</p>
+                        <p>📞 010-7170-5646</p>
+                        <p>📧 <a href="mailto:jimeaningful@gmail.com">jimeaningful@gmail.com</a></p>
+                    </div>
+                    <p class="intro-desc">~~~~~~~~~~~~~설명글 필요~~~~~~~~~~~~~</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="reveal">
+            <h2 class="section-title">Technical Skills & Licenses</h2>
+            <div class="skills-grid">
+                <div class="skill-item">
+                    <h5>Technical Stack</h5>
+                    <div class="tags">
+                        <span>C / C++</span><span>Python</span><span>CAPL</span><span>CAN/LIN</span>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <h5>Tools</h5>
+                    <div class="tags">
+                        <span>Vector CANoe</span><span>CANalyzer</span><span>GIT</span><span>Jira</span><span>Confluence</span>
+                    </div>
+                </div>
+                <div class="skill-item full-width">
+                    <h5>Certifications (Click for details)</h5>
+                    <div class="tags">
+                        <span class="tag-link lang-tag" onclick="showLicense('TOEIC Speaking', 'YBM', '2025.06.29', 'Intermediate Mid 3/130')">TOEIC Speaking IM3</span>
+                        <span class="tag-link" onclick="showLicense('정보처리기사', '한국산업인력공단', '2022.11.25', '01206778')">정보처리기사</span>
+                        <span class="tag-link" onclick="showLicense('리눅스마스터 2급', '한국정보통신진흥협회', '2024.03.29', 'LMS-2401-005775')">리눅스마스터 2급</span>
+                        <span class="tag-link" onclick="showLicense('SQL개발자(SQLD)', '한국데이터산업진흥원', '2021.12.17', '043006222')">SQL개발자(SQLD)</span>
+                        <span class="tag-link" onclick="showLicense('2종 보통 운전면허', '서울지방경찰청', '2020.08.27', '')">운전면허 2종 보통</span>
+                        <span class="tag-link" onclick="showLicense('중등정교사 2급 (정보/컴퓨터)', '교육부', '2023.02.21', '')">중등정교사 2급</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience" class="reveal">
+            <h2 class="section-title">Experience</h2>
+            
+            <div class="exp-group">
+                <h3 class="group-label">Professional Work</h3>
+                <div class="exp-card highlight-card clickable" onclick="showProjectDetails('hils')">
+                    <div class="exp-header">
+                        <h4>자동차 제어기 HILS 검증</h4>
+                        <span class="date">2024.04.01 - 현재</span>
+                    </div>
+                    <p class="company">유라코퍼레이션 (YURA Corporation) / 전자제어검증팀 선임연구원</p>
+                    <ul class="task-list">
+                        <li>CANoe를 활용한 게이트웨이 검증</li>
+                        <li>차량 네트워크 통신 분석 및 Fault Injection 테스트</li>
+                        <li>ES95486-02 기반 자동차 사이버보안 ASK 검증</li>
+                        <li>Python과 CAPL을 활용한 자동화 테스트 케이스 개발</li>
+                        <li>HILS 및 SW 검증 툴 활용한 시스템 요구사양 분석 및 결과 리뷰</li>
+                        <li>베트남 연구소 업무 요청 및 대응</li>
+                        <li>'차량 주정차시 오염 위험 알림 시스템 및 방법' 특허 출원</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="exp-group">
+                <h3 class="group-label">Academic Projects</h3>
+                <div class="exp-card academic clickable" onclick="showProjectDetails('target_system')">
+                    <div class="exp-header">
+                        <h4>실시간 표적 탐지 및 미사일 자동화 시스템</h4>
+                        <span class="date">상세보기 →</span>
+                    </div>
+                    <p class="company">임베디드 팀 프로젝트</p>
+                    <ul class="task-list">
+                        <li>Raspberry Pi와 Intel OpenVINO를 활용한 표적 분류 및 감지</li>
+                        <li>P제어식을 활용한 포 각도 계산 및 모터 제어 자동화</li>
+                    </ul>
+                </div>
+                <div class="exp-card academic clickable" onclick="showProjectDetails('ros')">
+                    <div class="exp-header">
+                        <h4>신호등 인식을 통한 자율주행 차량 구동</h4>
+                        <span class="date">상세보기 →</span>
+                    </div>
+                    <p class="company">임베디드 팀 프로젝트</p>
+                    <ul class="task-list">
+                        <li>TurtleBot의 신호등 색상 판단 및 진행 여부 결정 로직 구현</li>
+                        <li>차선 및 정지선 인식을 위한 ROS 기반 자율주행 구현</li>
+                    </ul>
+                </div>
+                <div class="exp-card academic clickable" onclick="showProjectDetails('songs')">
+                    <div class="exp-header">
+                        <h4>딥러닝 기반 동요 자동 작사 작곡 프로그램</h4>
+                        <span class="date">상세보기 →</span>
+                    </div>
+                    <p class="company">졸업프로젝트 캡스톤 디자인</p>
+                    <ul class="task-list">
+                        <li>그림 객체 인식을 통한 키워드 추출 및 KoGPT2 기반 작사</li>
+                        <li>GAN을 활용한 키워드 분위기 맞춤형 자동 작곡 시스템</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="activities" class="reveal">
+            <h2 class="section-title">Activities</h2>
+            <div class="exp-card">
+                <div class="exp-header">
+                    <h4>Intel Edge AI SW 아카데미</h4>
+                    <span class="date">2023.09 - 2024.03</span>
+                </div>
+                <p class="company">대한상공회의소 서울기술교육센터</p>
+                <p class="desc">임베디드 프로그래밍과 Intel OpenVINO 플랫폼 기반 AIoT 응용 SW 개발</p>
+            </div>
+            <div class="exp-card">
+                <div class="exp-header">
+                    <h4>C언어 방과후 학교 교육 봉사</h4>
+                    <span class="date">2021.04 - 2021.08</span>
+                </div>
+                <p class="company">서울 문현고등학교</p>
+                <p class="desc">고등학생 대상 C언어 기초 문법 및 알고리즘 교육 진행</p>
+            </div>
+        </section>
+
+        <section id="education" class="reveal">
+            <h2 class="section-title">Education</h2>
+            <div class="edu-card">
+                <div class="edu-info">
+                    <span class="univ">덕성여자대학교</span>
+                    <span class="major">컴퓨터공학과 (학사 졸업)</span>
+                </div>
+                <div class="gpa-container">
+                    <div class="gpa-main">전체 학점 <span class="point">4.01 / 4.5</span></div>
+                    <div class="gpa-sub">전공 학점 <span class="sub-point">3.95 / 4.5</span></div>
+                </div>
+            </div>
+        </section>  
+
+        <section id="contact" class="reveal">
+            <div class="contact-card">
+                <h2>귀사의 기술적 완성도를 함께 높이고 싶습니다.</h2>
+                <div class="contact-links">
+                    <a href="mailto:jimeaningful@gmail.com" class="btn-primary">Email Me</a>
+                    <a href="#" class="btn-secondary">Resume PDF</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="licenseModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h3 id="m-name" class="point">자격증 명</h3>
+            <hr>
+            <p><strong>발급기관:</strong> <span id="m-org">기관명</span></p>
+            <p><strong>발급일자:</strong> <span id="m-date">2000.00.00</span></p>
+            <p id="m-row-num"><strong id="m-label">자격번호:</strong> <span id="m-num">00-00-000000</span></p>
+        </div>
+    </div>
+
+    <div id="projectModal" class="modal project-modal">
+        <div class="modal-content project-card">
+            <span class="close" onclick="closeProjectModal()">&times;</span>
+            <div class="project-inner">
+                <div class="project-header-section">
+                    <h3 id="p-title" class="point">프로젝트 명</h3>
+                    <p id="p-subtitle" class="project-subtitle">한 줄 설명</p>
+                    <div class="project-meta-grid">
+                        <div><strong>기간:</strong> <span id="p-date"></span></div>
+                        <div><strong>인원/역할:</strong> <span id="p-role"></span></div>
+                        <div><strong>GitHub:</strong> <a id="p-github" href="#" target="_blank">Repository</a></div>
+                    </div>
+                </div>
+                <hr class="header-divider">
+                <div class="project-body custom-scroll">
+                    <div class="project-section"><h3>🪄 Output</h3></p></div>
+                    <div class="project-image-container">
+                        <img id="p-image" src="" alt="Project Image" onerror="this.style.display='none'">
+                    </div><br>
+                    <div class="project-section"><h3>🚀 개발 동기 및 필요성</h3><p id="p-motive"></p></div><br>
+                    <div class="project-section"><h3>🛠 시스템 아키텍처 & 구현</h3><p id="p-arch"></p></div><br>
+                    <div class="project-section highlight-section"><h3>💡 핵심 역할 및 수행 내용</h3><p id="p-details"></p></div><br>
+                    <div class="project-section"><h3>⚠️ 문제점 및 해결 방안</h3><div id="p-trouble" class="trouble-box"></div></div><br>
+                    <div class="project-section"><h3>🏁 결론 및 시사점</h3><p id="p-conclusion"></p></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
