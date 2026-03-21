@@ -37,7 +37,10 @@
                         <p>📞 010-7170-5646</p>
                         <p>📧 <a href="mailto:jimeaningful@gmail.com">jimeaningful@gmail.com</a></p>
                     </div>
-                    <p class="intro-desc">~~~~~~~~~~~~~설명글 필요~~~~~~~~~~~~~</p>
+                    <p class="intro-desc">차량용 게이트웨이 시스템 검증을 수행하는 임베디드 시스템 엔지니어입니다.<br>
+                    CAN/LIN 네트워크 기반 ECU 통신 분석과 Vector CANoe/CAPL을 활용한 테스트 자동화 경험을 보유하고 있습니다.<br>
+                    업무 중 발생하는 반복적인 문제 해결을 체계화하기 위해 AI를 활용한 troubleshooting 아카이브를 구축하고, 차량 관련 기술 특허를 출원하는 등 지속적인 개선 활동을 수행하고 있습니다.
+                    </p>
                 </div>
             </div>
         </section>
@@ -48,13 +51,13 @@
                 <div class="skill-item">
                     <h5>Technical Stack</h5>
                     <div class="tags">
-                        <span>C / C++</span><span>Python</span><span>CAPL</span><span>CAN/LIN</span>
+                        <span>C / C++</span><span>Python</span><span>CAPL</span><span>CAN/LIN</span><span>HILS</span>
                     </div>
                 </div>
                 <div class="skill-item">
                     <h5>Tools</h5>
                     <div class="tags">
-                        <span>Vector CANoe</span><span>CANalyzer</span><span>GIT</span><span>Jira</span><span>Confluence</span>
+                        <span>Vector CANoe</span><span>CANalyzer</span><span>Git</span><span>Jira</span><span>Confluence</span>
                     </div>
                 </div>
                 <div class="skill-item full-width">
@@ -72,34 +75,37 @@
         </section>
 
         <section id="experience" class="reveal">
-            <h2 class="section-title">Experience</h2>
+            <h2 class="section-title">Experience</h2>     
             
             <div class="exp-group">
                 <h3 class="group-label">Professional Work</h3>
-                <div class="exp-card highlight-card clickable" onclick="showProjectDetails('hils')">
+                <div class="exp-card highlight-card" onclick="showExperienceDetails('hils_specialist')">
                     <div class="exp-header">
                         <h4>자동차 제어기 HILS 검증</h4>
-                        <span class="date">2024.04.01 - 현재</span>
+                        <span style="color: var(--point); font-weight: 600;">상세 보기 +</span>
                     </div>
                     <p class="company">유라코퍼레이션 (YURA Corporation) / 전자제어검증팀 선임연구원</p>
                     <ul class="task-list">
                         <li>CANoe를 활용한 게이트웨이 검증</li>
                         <li>차량 네트워크 통신 분석 및 Fault Injection 테스트</li>
-                        <li>ES95486-02 기반 자동차 사이버보안 ASK 검증</li>
+                        <li>자동차 사이버보안 ASK 검증</li>
                         <li>Python과 CAPL을 활용한 자동화 테스트 케이스 개발</li>
                         <li>HILS 및 SW 검증 툴 활용한 시스템 요구사양 분석 및 결과 리뷰</li>
+                        <li>AI를 활용한 문제 해결 정리 사이트 개발</li>
                         <li>베트남 연구소 업무 요청 및 대응</li>
                         <li>'차량 주정차시 오염 위험 알림 시스템 및 방법' 특허 출원</li>
                     </ul>
                 </div>
             </div>
+        </div>
+    </div>  
             
             <div class="exp-group">
                 <h3 class="group-label">Academic Projects</h3>
                 <div class="exp-card academic clickable" onclick="showProjectDetails('target_system')">
                     <div class="exp-header">
                         <h4>실시간 표적 탐지 및 미사일 자동화 시스템</h4>
-                        <span class="date">상세보기 →</span>
+                        <span style="color: var(--point); font-weight: 600;">상세 보기 +</span>
                     </div>
                     <p class="company">임베디드 팀 프로젝트</p>
                     <ul class="task-list">
@@ -110,7 +116,7 @@
                 <div class="exp-card academic clickable" onclick="showProjectDetails('ros')">
                     <div class="exp-header">
                         <h4>신호등 인식을 통한 자율주행 차량 구동</h4>
-                        <span class="date">상세보기 →</span>
+                        <span style="color: var(--point); font-weight: 600;">상세 보기 +</span>
                     </div>
                     <p class="company">임베디드 팀 프로젝트</p>
                     <ul class="task-list">
@@ -121,7 +127,7 @@
                 <div class="exp-card academic clickable" onclick="showProjectDetails('songs')">
                     <div class="exp-header">
                         <h4>딥러닝 기반 동요 자동 작사 작곡 프로그램</h4>
-                        <span class="date">상세보기 →</span>
+                        <span style="color: var(--point); font-weight: 600;">상세 보기 +</span>
                     </div>
                     <p class="company">졸업프로젝트 캡스톤 디자인</p>
                     <ul class="task-list">
@@ -165,7 +171,7 @@
                 </div>
             </div>
         </section>  
-
+<!-- 
         <section id="contact" class="reveal">
             <div class="contact-card">
                 <h2>귀사의 기술적 완성도를 함께 높이고 싶습니다.</h2>
@@ -174,7 +180,7 @@
                     <a href="#" class="btn-secondary">Resume PDF</a>
                 </div>
             </div>
-        </section>
+        </section> -->
     </main>
 
     <div id="licenseModal" class="modal">
@@ -196,14 +202,17 @@
                     <h3 id="p-title" class="point">프로젝트 명</h3>
                     <p id="p-subtitle" class="project-subtitle">한 줄 설명</p>
                     <div class="project-meta-grid">
-                        <div><strong>기간:</strong> <span id="p-date"></span></div>
-                        <div><strong>인원/역할:</strong> <span id="p-role"></span></div>
-                        <div><strong>GitHub:</strong> <a id="p-github" href="#" target="_blank">Repository</a></div>
+                        <div><strong>기간: </strong><span id="p-date"></span></div>
+                        <div><strong>인원/역할: </strong><span id="p-role"></span></div>
+                        <div id="p-github-area">
+                            <strong>GitHub:</strong>
+                            <a id="p-github" href="#" target="_blank">Repository</a>
+                        </div>
                     </div>
                 </div>
                 <hr class="header-divider">
                 <div class="project-body custom-scroll">
-                    <div class="project-section"><h3>🪄 Output</h3></p></div>
+                    <div class="project-section"><h3>☘️ Output</h3><p id="p-output"></p></div>
                     <div class="project-image-container">
                         <img id="p-image" src="" alt="Project Image" onerror="this.style.display='none'">
                     </div><br>
@@ -213,6 +222,24 @@
                     <div class="project-section"><h3>⚠️ 문제점 및 해결 방안</h3><div id="p-trouble" class="trouble-box"></div></div><br>
                     <div class="project-section"><h3>🏁 결론 및 시사점</h3><p id="p-conclusion"></p></div>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="expModal" class="modal">
+        <div class="modal-content exp-card-modal">
+            <span class="close" onclick="closeExpModal()">&times;</span>
+            <div class="exp-modal-header">
+                <span class="badge">Professional Experience</span>
+                <h3 id="exp-title"></h3>
+                <p id="exp-company" class="company-name"></p>
+                <p id="exp-period" class="date-text"></p>
+                <div id="exp-tech-tags" class="tech-tags-container"></div>
+            </div>
+            <div class="exp-modal-body custom-scroll">
+                <div id="exp-tasks"></div>
+                <div id="exp-efficiency"></div>
+                <div id="exp-achievements"></div>
             </div>
         </div>
     </div>

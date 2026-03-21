@@ -411,3 +411,120 @@ h1 { font-size: 2.5rem; line-height: 1.3; margin-bottom: 20px; }
     position: fixed;
     height: 100%; /* 화면 높이를 고정하여 스크롤 차단 */
 }
+
+/* 제목 옆의 로켓이나 툴 아이콘을 지우고 싶을 때 */
+.project-section h4 {
+    font-size: 1.2rem;
+    color: var(--point);
+    margin-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 5px;
+}
+
+/* 데이터가 숨겨져도 섹션 간격이 일정하게 유지되도록 */
+.project-section {
+    margin-bottom: 30px;
+}
+
+.project-section:last-child {
+    margin-bottom: 0;
+}
+
+.project-section[style*="display: none"] {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* 경력 모달 전용 스타일 */
+.exp-card-modal {
+    max-width: 750px !important;
+    height: 85vh;
+    padding: 0 !important;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.exp-modal-header {
+    padding: 40px;
+    background: #f8fafc;
+    border-bottom: 1px solid var(--border);
+}
+
+.company-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-sub);
+    margin: 8px 0;
+}
+
+.tech-tags-container {
+    margin-top: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.tech-tag {
+    background: white;
+    border: 1px solid var(--point);
+    color: var(--point);
+    padding: 3px 10px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.exp-modal-body {
+    padding: 40px;
+    overflow-y: auto;
+    flex-grow: 1;
+}
+
+.exp-sub-section {
+    margin-bottom: 35px;
+}
+
+.exp-sub-section h5 {
+    font-size: 1.1rem;
+    color: var(--text-main);
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.exp-sub-section ul {
+    padding-left: 20px;
+}
+
+.exp-sub-section li {
+    margin-bottom: 10px;
+    color: var(--text-sub);
+}
+
+.highlight-box {
+    background: var(--point-soft);
+    padding: 25px;
+    border-radius: 12px;
+    border-left: 4px solid var(--point);
+}
+
+.emoji { margin-right: 8px; }
+
+/* Professional Work 카드 전용 Hover 효과 */
+.exp-card.highlight-card {
+    cursor: pointer;
+    transition: all 0.3s ease; /* 부드러운 변화 */
+}
+
+.exp-card.highlight-card:hover {
+    transform: translateY(-8px); /* 위로 살짝 들림 */
+    background: #ffffff; /* 배경색을 더 밝게 */
+    border-color: var(--point); /* 테두리를 포인트 색상으로 */
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1); /* 그림자 강조 */
+}
+
+/* 카드 내부의 제목 색상 변화 */
+.exp-card.highlight-card:hover h4 {
+    color: var(--point);
+}

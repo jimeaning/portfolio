@@ -20,14 +20,18 @@ document.addEventListener('DOMContentLoaded', () => {
     // 2. 부드러운 스크롤
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
-            e.preventDefault();
             const targetId = this.getAttribute('href');
+
+            // [체크 1] href가 그냥 "#" 이거나 비어있으면 무시 (GitHub 링크 등 예외 처리)
+            if (targetId === '#' || targetId === '') return;
+
+            // [체크 2] 내부 링크인 경우에만 스크롤 기능 작동
             const targetElement = document.querySelector(targetId);
             
             if (targetElement) {
+                e.preventDefault(); // 유효한 타겟이 있을 때만 기본 동작 막기
                 targetElement.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
+                    behavior: 'smooth'
                 });
             }
         });
@@ -85,7 +89,7 @@ function closeModal() {
     document.body.classList.add('no-scroll');
 }
 
-// 기존 window.onclick에 프로젝트 모달 닫기 추가 (통합 예시)
+// 기존 window.onclick에 프로젝트 모달 닫기 추가
 window.addEventListener('click', (event) => {
     const pModal = document.getElementById('projectModal');
     const lModal = document.getElementById('licenseModal');
@@ -93,20 +97,67 @@ window.addEventListener('click', (event) => {
     if (event.target === lModal) closeModal();
 });
 
-// 프로젝트 데이터를 객체 형태로 저장 (예시)
+// 프로젝트 데이터를 객체 형태로 저장
 const projectData = {
     hils: {
-        title: "자동차 제어기 HILS 검증 고도화",
-        subtitle: "실시간 시뮬레이션을 통한 제어 로직의 안정성 확보 프로젝트",
-        date: "2024.03 - 2026.02",
-        role: "2명 / HILS 시나리오 설계 및 검증 메인",
-        github: "https://github.com/yourid/project",
-        image: "project_hils.jpg", // 이미지 경로
-        motive: "자율주행 제어기의 복잡도가 증가함에 따라 실차 테스트 전 단계에서의 정밀한 로직 검증 필요성이 대두되었습니다.",
-        arch: "dSPACE 장비와 CANoe를 연동하여 가상 차량 모델(Simulink) 환경 구축...",
-        details: "1. 300여 개의 테스트 케이스 자동화 스크립트 작성<br>2. Fail-Safe 로직 강제 고장 주입 테스트 수행",
-        trouble: "<strong>문제:</strong> 실시간성 결여로 인한 오버런 발생<br><strong>해결:</strong> 타임 스텝 최적화 및 불필요한 로깅 데이터 축소로 연산 부하 20% 절감",
-        conclusion: "HILS 검증을 통해 실차 단계에서의 결함 발생률을 30% 이상 사전 예방하는 성과를 거두었습니다."
+        title: "차량용 게이트웨이 통신 시스템 검증",
+        date: "2024.04.01 - (재직중)",
+        role: "유라코퍼레이션 / 선임연구원",
+        env: "Vector CANoe, VT System, ES95486-02",
+        details: `
+            <div class="list-item">&bull; <strong>게이트웨이 제어기 검증</strong></div>
+            <div class="list-item indent">&circ; 차량 네트워크 통신 분석 및 Fault Injection 테스트 수행</div>
+            <div class="list-item">&bull; <strong>사이버보안 ASK 검증</strong></div>
+            <div class="list-item indent">&circ; ES95486-02 기반 보안 요구사항 준수 여부 확인</div>
+            <div class="list-item">&bull; <strong>테스트 자동화</strong></div>
+            <div class="list-item indent">&circ; Python 및 CAPL을 활용한 자동화 테스트 시나리오 개발</div>
+            <b>1. CANoe 활용 게이트웨이 검증 & 통신 분석</b>
+            <img src='images/bts/설명1.png' style='width:100%; margin:15px 0;'>
+            <div class="list-item">&bull; Step Motor로 카메라를 회전시킨다.<br></div>
+            <div class="list-item">&bull; 영상 frame을 Raspberry Pi로부터 받아 와 GUI에 출력한다.<br></div>
+            <div class="list-item indent">\u25E6 동시성을 갖기 위해 Thread 사용 (Video Thread)</div>
+            <br>
+            <b>2. Fault Injection 테스트</b>
+            <img src='images/bts/설명2.png' style='width:100%; margin:15px 0;'>
+            <div class="list-item">&bull; 객체가 탐지되면 콘솔에 ‘타겟 포착’ 메세지를 출력한다.<br></div>
+            <div class="list-item">&bull; 직접 수집한 900여 장의 데이터를 CVAT으로 라벨링 후 Intel OpenVINO 모델을 활용해 객체 탐지 및 분류를 진행한다.<br></div>
+            <div class="list-item">&bull; 영상처리 후 타겟의 Category와 Type을 받아 온다.<br></div>
+            <div class="list-item indent">\u25E6 Category</div>
+            <div class="list-item indent">0 : Car, 1 : Plane, 2 : Human</div>
+            <div class="list-item indent">\u25E6 Type</div>
+            <div class="list-item indent">0 : Tank, 1 : Two-Half Truck, 2 : Retona, 3 : Plane, 4 : Fighter-jet, 5 : Hellicopter, 6 : Human</div>
+            <img src='images/bts/설명2-영상처리.png' style='width:100%; margin:15px 0;'>
+            <br>
+            <b>3. 사이버보안 ASK 검증</b>
+            <img src='images/bts/설명3.png' style='width:100%; margin:15px 0;'>
+            <div class="list-item">&bull; 분류된 객체를 바탕으로 타겟의 특성에 맞는 무기를 선택한다.<br></div>
+            <div class="list-item indent">\u25E6 탱크나 두돈반과 같은 대전차: 파괴력 강화</div>
+            <div class="list-item indent">\u25E6 전투기나 헬기와 같은 대공(對空): 속도 강화</div>
+            <div class="list-item indent">\u25E6 대인(對人): 대량살상무기</div>
+            <div class="list-item">&bull; 무기가 선택되면 LED가 점등되고 계산된 각도값으로 Servo Motor를 제어한다.<br></div>
+            <br>
+            <b>4. Python & CAPL 활용 자동화 테스트 개발</b>
+            <img src='images/bts/설명4.png' style='width:100%; margin:15px 0;'>
+            <div class="list-item">&bull; 카메라 화면(640*480) 내 물체가 위치한 곳을 ROI 영역으로 구분한다.<br></div>
+            <div class="list-item">&bull; ROI 영역의 중심점 위치를 비례제어식에 넣어 포 각도를 계산한다.<br></div>
+            <div class="list-item">&bull; 각도 결괏값으로 Servo Motor 제어한다.<br></div>
+            <br>
+            <b>5. </b>
+            <br>
+            <b>6. 특허 및 해외 협업 (베트남 연구소 대응)</b>
+            <img src='images/bts/설명5.png' style='width:100%; margin:15px 0;'>
+            <div class="list-item">&bull; Servo Motor가 제어되면 발사 완료 LED(붉은색)가 점등된다.<br></div>
+            <div class="list-item">&bull; 5초 카운트다운을 시작한다.<br></div>
+            <div class="list-item">&bull; 5초가 지난 이후 ‘발사’ 버튼이 활성화된다.<br></div>
+            <div class="list-item indent">\u25E6 남은 탄 개수가 0이면 카운트다운과 ‘발사’ 버튼 활성화가 진행되지 않는다.</div>
+            <div class="list-item">&bull; ‘발사’ 버튼이 눌리고 탄을 사용하면, 탄 개수를 감소시키고 HW에 발사 완료 sign을 전달한다.<br></div>
+            <div class="list-item">&bull; HW에서 ‘발사 완료’ signal을 받으면 Servo Motor를 초기화하고 시스템을 재개한다.<br></div>
+        `,
+        trouble: `
+            <strong>[문제 상황]</strong> 하드웨어와 시뮬레이션 환경 간의 타이밍 오차 발생<br>
+            <strong>[해결 방안]</strong> CAPL 스크립트 최적화 및 실시간 동기화 파라미터 튜닝을 통해 검증 신뢰도 15% 향상
+        `,
+        conclusion: "체계적인 HILS 환경 운영을 통해 제어기 양산 전 단계의 소프트웨어 신뢰성을 확보하였습니다.",
     },
     target_system: {
         title: "실시간 표적 탐지 및 미사일 자동화 시스템",
@@ -294,33 +345,56 @@ function showProjectDetails(projectId) {
     const data = projectData[projectId];
     if (!data) return;
 
-    const modal = document.getElementById('projectModal');
-    
-    // 텍스트 주입
+    // [1] 상단 고정 항목
     document.getElementById('p-title').innerText = data.title;
-    document.getElementById('p-subtitle').innerText = data.subtitle;
     document.getElementById('p-date').innerText = data.date;
     document.getElementById('p-role').innerText = data.role;
-    document.getElementById('p-github').href = data.github;
-    
-    // 이미지 주입
-    const imgElement = document.getElementById('p-image');
-    if (data.image) {
-        imgElement.src = data.image;
-        imgElement.style.display = 'block'; // 이미지가 있으면 보여줌
-    } else {
-        imgElement.style.display = 'none'; // 없으면 영역 숨김
+
+    // [2] 선택적 항목 리스트
+    const optionalFields = {
+        'p-subtitle': data.subtitle,
+        'p-github': data.github,
+        'p-image': data.image, // 이미지 필드
+        'p-motive': data.motive,
+        'p-arch': data.arch,
+        'p-details': data.details,
+        'p-trouble': data.trouble,
+        'p-conclusion': data.conclusion
+    };
+
+    for (let id in optionalFields) {
+        const el = document.getElementById(id);
+        if (!el) continue;
+
+        const val = optionalFields[id];
+        let wrapper;
+
+        // 특정 영역(GitHub, 이미지)은 ID로 직접 부모를 찾고, 나머지는 클래스로 찾음
+        if (id === 'p-github') {
+            wrapper = document.getElementById('p-github-area');
+        } else if (id === 'p-image') {
+            wrapper = document.getElementById('p-image-area'); // 이미지 부모 ID 추가
+        } else {
+            wrapper = el.closest('.project-section');
+        }
+
+        if (val) {
+            if (id === 'p-github') {
+                el.href = val;
+            } else if (id === 'p-image') {
+                el.src = val;
+                el.style.display = "block"; // 이미지 자체 표시
+            } else {
+                el.innerHTML = val;
+            }
+            if (wrapper) wrapper.style.display = "block"; // 부모 영역 표시
+        } else {
+            if (wrapper) wrapper.style.display = "none"; // 부모 영역 숨김
+        }
     }
 
-    // 본문 주입
-    document.getElementById('p-motive').innerHTML = data.motive;
-    document.getElementById('p-arch').innerHTML = data.arch;
-    document.getElementById('p-details').innerHTML = data.details;
-    document.getElementById('p-trouble').innerHTML = data.trouble;
-    document.getElementById('p-conclusion').innerHTML = data.conclusion;
-
-    modal.style.display = "block";
-    document.body.classList.add('no-scroll'); // 뒷배경 스크롤 막기
+    document.getElementById('projectModal').style.display = "block";
+    document.body.classList.add('no-scroll');
 }
 
 // 프로젝트 모달 닫기
@@ -329,4 +403,77 @@ function closeProjectModal() {
     
     modal.style.display = "none";
     document.body.classList.remove('no-scroll'); // 뒷배경 스크롤 다시 허용
+}
+
+const expData = {
+    hils_specialist: {
+        title: "자동차 제어기 HILS 검증",
+        period: "2024.04.01 - ",
+        company: "유라코퍼레이션 / 전자제어검증팀 선임연구원",
+        techStack: ["Vector CANoe", "CAPL", "Python", "VT System", "CAN/LIN"],
+        
+        // 1. 핵심 업무 상세
+        tasks: `
+            <div class="exp-sub-section">
+                <h5><span class="emoji">⚙️</span> 제어기 통신 및 보안 검증</h5>
+                <ul>
+                    <li><strong>차량 게이트웨이 시스템 검증:</strong> CANoe 기반 메시지 라우팅 정밀도 및 통신 무결성 분석</li>
+                    <li><strong>사이버보안 ASK 검증:</strong> ES95486-02 및 ISO/SAE 21434 기반 보안 요구사항 준수 테스트</li>
+                    <li><strong>결함 주입(Fault Injection):</strong> 강제 통신 장애 상황 시나리오 설계 및 제어기 대응 로직 안정성 확보</li>
+                    <li><strong>글로벌 협업:</strong> 베트남 연구소 기술 대응 및 요구사양 분석/결과 리뷰 리딩</li>
+                </ul>
+            </div>
+        `,
+        
+        // 2. 업무 효율화 성과
+        efficiency: `
+            <div class="exp-sub-section highlight-box">
+                <h5><span class="emoji">🚀</span> 업무 자동화 및 AI 도입 성과</h5>
+                <ul>
+                    <li><strong>테스트 자동화:</strong> Python 및 CAPL 스크립트 최적화를 통한 검증 프로세스 효율 개선</li>
+                    <li><strong>AI 지식 관리 시스템:</strong> 실무 에러 로그 및 해결법을 자산화한 '문제 해결 정리 사이트' 자체 개발</li>
+                </ul>
+            </div>
+        `,
+        
+        // 3. 특허 및 기타 성과
+        achievements: `
+            <div class="exp-sub-section">
+                <h5><span class="emoji">🏆</span> 주요 성과</h5>
+                <p><strong>[특허 출원]</strong> 차량 주정차 시 오염 위험 알림 시스템 및 방법</p>
+                <img src='images/patent.jpg' style='width:50%; margin:15px 0;'>
+                <img src='images/순서도.png' style='width:50%; margin:15px 0;'>
+                <img src='images/도면.png' style='width:50%; margin:15px 0;'>
+            </div>
+        `
+    }
+};
+
+// 경력 상세 모달 표시 함수
+function showExperienceDetails(id) {
+    const data = expData[id];
+    if (!data) return;
+
+    // 헤더 정보
+    document.getElementById('exp-title').innerText = data.title;
+    document.getElementById('exp-company').innerText = data.company;
+    document.getElementById('exp-period').innerText = data.period;
+
+    // 기술 스택 (태그 생성)
+    const techContainer = document.getElementById('exp-tech-tags');
+    techContainer.innerHTML = data.techStack.map(tag => `<span class="tech-tag">${tag}</span>`).join('');
+
+    // 본문 주입
+    document.getElementById('exp-tasks').innerHTML = data.tasks;
+    document.getElementById('exp-efficiency').innerHTML = data.efficiency;
+    document.getElementById('exp-achievements').innerHTML = data.achievements;
+
+    // 모달 표시
+    document.getElementById('expModal').style.display = "block";
+    document.body.classList.add('no-scroll');
+}
+
+function closeExpModal() {
+    document.getElementById('expModal').style.display = "none";
+    document.body.classList.remove('no-scroll');
 }
